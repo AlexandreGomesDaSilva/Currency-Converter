@@ -46,6 +46,7 @@ class App extends React.Component {
     });
   }
 
+  // Method for updating the `inputSearch` state property
   setSearchValue(newValue) {
     this.setState({
       inputSearch: newValue,
@@ -69,11 +70,28 @@ class App extends React.Component {
     return resultToDisplay;
   }
 
+  filterCurrencies() {
+    // Destructuring the `inputSearch` property from the component's state
+    const { inputSearch } = this.state;
+    // Converting the search input to lowercase for case-insensitive comparison
+    const inputSearchLowered = inputSearch.toLowerCase();
+    // Filtering the currencies array based on the search input
+    const filteredCurrencies = currencies.filter((item) => {
+      // Convert the name of each currency to lowercase for case-insensitive comparison
+      const nameLowered = item.name.toLowerCase();
+      // Check if the currency's name includes the search input (case-insensitive)
+      return nameLowered.includes(inputSearchLowered);
+    });
+    // Return the array of filtered currencies
+    return filteredCurrencies;
+  }
+
   // Render method to render the component's UI
   render() {
     const { currenciesOpen, baseAmount, currencyName, inputSearch } =
       this.state;
     const result = this.computeAmount();
+    const filteredCurrencies = this.filterCurrencies();
 
     return (
       <div className="App">
@@ -82,7 +100,7 @@ class App extends React.Component {
           <Button clickTreatment={this.handleClick} isOpen={currenciesOpen} />
           {currenciesOpen && (
             <Currencies
-              currenciesList={currencies}
+              currenciesList={filteredCurrencies}
               handleClick={this.handleClickOnCurrency}
               searchValue={inputSearch}
               setSearchValue={this.setSearchValue}

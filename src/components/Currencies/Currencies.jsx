@@ -15,6 +15,7 @@ const Currencies = ({
         placeholder="Rechercher"
         value={searchValue}
         onChange={(event) => {
+          // When the user types in the input field, this event handler is triggered
           // console.log(event.target.value);
 
           // Transmit the new value in App's state
