@@ -20,11 +20,14 @@ class App extends React.Component {
       baseAmount: 1,
       // The name of the currently selected currency
       currencyName: 'United States Dollar',
+      // Input value for the currency search field
+      inputSearch: '',
     };
     // Binding the 'handleClick' method to the current instance of the class
     // This is necessary to preserve the correct context of 'this' inside the method
     this.handleClick = this.handleClick.bind(this);
     this.handleClickOnCurrency = this.handleClickOnCurrency.bind(this);
+    this.setSearchValue = this.setSearchValue.bind(this);
   }
 
   handleClick() {
@@ -40,6 +43,12 @@ class App extends React.Component {
   handleClickOnCurrency(newCurrencyName) {
     this.setState({
       currencyName: newCurrencyName,
+    });
+  }
+
+  setSearchValue(newValue) {
+    this.setState({
+      inputSearch: newValue,
     });
   }
 
@@ -62,7 +71,8 @@ class App extends React.Component {
 
   // Render method to render the component's UI
   render() {
-    const { currenciesOpen, baseAmount, currencyName } = this.state;
+    const { currenciesOpen, baseAmount, currencyName, inputSearch } =
+      this.state;
     const result = this.computeAmount();
 
     return (
@@ -74,6 +84,8 @@ class App extends React.Component {
             <Currencies
               currenciesList={currencies}
               handleClick={this.handleClickOnCurrency}
+              searchValue={inputSearch}
+              setSearchValue={this.setSearchValue}
             />
           )}
           <Amount

@@ -6,11 +6,24 @@
   max-height: 450px;
 
   .currencies-title {
-    font-weight: variables.$fwBold;
     padding: variables.$gutter;
-    margin-top: variables.$gutter;
   }
+  .currencies-search {
+    border: none;
+    width: 100%;
+    color: variables.$mainColor;
+    font-size: 1.2em;
 
+
+    &::placeholder {
+      color: variables.$altColor;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+  
   .currency {
     border-top: 1px solid variables.$altColor;
     padding: variables.$gutter;
