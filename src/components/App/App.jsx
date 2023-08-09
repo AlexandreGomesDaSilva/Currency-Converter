@@ -3,11 +3,13 @@ import Currencies from '../Currencies/Currencies';
 import Amount from '../Amount/Amount';
 import './App.scss';
 
+import currencies from '../../data/currencies';
+
 function App() {
   return (
     <div className="App">
       <Header />
-      <Currencies />
+      <Currencies currenciesList={currencies} />
       <Amount />
     </div>
   );
