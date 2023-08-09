@@ -1,0 +1,25 @@
+@use 'src/styles/variables';
+
+.currencies {
+  text-align: left;
+  overflow-y: auto;
+  max-height: 350px;
+
+  .currencies-title {
+    font-weight: variables.$fwBold;
+    padding: variables.$gutter;
+    margin-top: variables.$gutter;
+  }
+
+  .currency {
+    border-top: 1px solid variables.$altColor;
+    padding: variables.$gutter;
+    font-weight: variables.$fwNormal;
+    transition: background-color variables.$slowTransition;
+
+    &:hover {
+      background-color: variables.$altColor;
+      transition: background-color variables.$fastTransition;
+    }
+  }
+}
