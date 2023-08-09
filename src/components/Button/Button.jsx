@@ -19,7 +19,6 @@ const Button = ({ clickTreatment, isOpen }) => {
 };
 
 Button.propTypes = {
-  // type fonction
   clickTreatment: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
 };

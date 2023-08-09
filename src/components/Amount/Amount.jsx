@@ -1,10 +1,16 @@
+import PropTypes from 'prop-types';
 import './Amount.scss';
 
-const Amount = () => (
+const Amount = ({ selectedCurrencyName, convertedAmount }) => (
   <div className="amount">
-    <p className="amount-value">45</p>
-    <p className="amount-currency">United States Dollar</p>
+    <p className="amount-value">{convertedAmount}</p>
+    <p className="amount-currency">{selectedCurrencyName}</p>
   </div>
 );
+
+Amount.propTypes = {
+  selectedCurrencyName: PropTypes.string.isRequired,
+  convertedAmount: PropTypes.string.isRequired,
+};
 
 export default Amount;
